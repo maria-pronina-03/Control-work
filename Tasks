@@ -1,4 +1,5 @@
 
+#include <string>
 #include <iostream>
 #include <ctime>
 //Task 1//
@@ -33,34 +34,61 @@
      return sum;
 
  }
+ //Task2//
+ void addAccount(){}
+ void removeAccount() {}
 
-int main()
-{
+ int main()
+ {
      //Task1//
-    int lines, columns;
-    std::cout << "Enter the number of lines: ";
-    std::cin >> lines; //введение переменной с консоли
-    std::cout << "Enter the number of columns: ";
-    std::cin >> columns; //введение переменной с консоли
-    // выделение памяти под двумерный массив
-    int** arr = new int* [lines];
-    for (int i = 0; i < lines; i++) {
-        arr[i] = new int[columns];
-    }
+     int lines, columns;
+     std::cout << "Enter the number of lines: ";
+     std::cin >> lines; //введение переменной с консоли
+     std::cout << "Enter the number of columns: ";
+     std::cin >> columns; //введение переменной с консоли
+     // выделение памяти под двумерный массив
+     int** arr = new int* [lines];
+     for (int i = 0; i < lines; i++) {
+         arr[i] = new int[columns];
+     }
 
-    NumbArray(arr, lines, columns);
-    std::cout << "Massiv:" << std::endl;
-    ResultArray(arr, lines, columns);
+     NumbArray(arr, lines, columns);
+     std::cout << "Massiv:" << std::endl;
+     ResultArray(arr, lines, columns);
 
-    int sum = SumDiagonal(arr, lines, columns);
-    std::cout << "The sum of the elements on the side diagonal: " << sum;
+     int sum = SumDiagonal(arr, lines, columns);
+     std::cout << "The sum of the elements on the side diagonal: " << sum << std::endl;
 
-    // освобождение памяти
-    for (int i = 0; i < lines; i++) {
-        delete[] arr[i];
-    }
-    delete[] arr;
+     // освобождение памяти
+     for (int i = 0; i < lines; i++) {
+         delete[] arr[i];
+     }
+     delete[] arr;
 
-    return 0;
-}
 
+     //Task2//
+
+     while (true) {
+         std::cout << " 1. Add account";
+         std::cout << "2. Remove account";
+         std::cout << "3. Update account";
+         std::cout << "4. Display accounts";
+         std::cout << "0. Exit";
+
+         int choice;
+         std::cout << "Enter your choice: ";
+         std::cin >> choice;
+
+         switch (choice) {
+         case 1:
+             addAccount();
+             break;
+         case 2:
+             removeAccount();
+             break;
+
+             return 0;
+         }
+
+     }
+ }
