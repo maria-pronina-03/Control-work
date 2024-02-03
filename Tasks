@@ -1,0 +1,66 @@
+
+#include <iostream>
+#include <ctime>
+//Task 1//
+
+ void NumbArray(int** arr, int lines, int columns ) //функция для заполнения массива
+ {
+     for (int i = 0; i < lines; i++) {
+         for (int j = 0; j < columns; j++) {
+             arr[i][j] = rand() % 70 + 1; // генерация случайного числа от 1 до 70
+         }
+     }
+ }
+ 
+ void ResultArray(int** arr, int lines, int columns) {  // функция вывода массива на экран
+     for (int i = 0; i < lines; i++) {
+         for (int j = 0; j < columns; j++) {
+             std::cout << arr[i][j] << " ";
+         }
+         std::cout << std::endl;
+     }
+ }
+ 
+ int SumDiagonal(int** arr, int lines, int columns) {  // функция вычисления суммы элементов на побочной диагонали
+     int sum = 0;
+     int j = columns - 1; // индекс столбца для побочной диагонали
+
+         for (int i = 0; i < lines; i++) {
+             sum += arr[i][j];
+             j--;
+         }
+
+     return sum;
+
+ }
+
+int main()
+{
+     //Task1//
+    int lines, columns;
+    std::cout << "Enter the number of lines: ";
+    std::cin >> lines; //введение переменной с консоли
+    std::cout << "Enter the number of columns: ";
+    std::cin >> columns; //введение переменной с консоли
+    // выделение памяти под двумерный массив
+    int** arr = new int* [lines];
+    for (int i = 0; i < lines; i++) {
+        arr[i] = new int[columns];
+    }
+
+    NumbArray(arr, lines, columns);
+    std::cout << "Massiv:" << std::endl;
+    ResultArray(arr, lines, columns);
+
+    int sum = SumDiagonal(arr, lines, columns);
+    std::cout << "The sum of the elements on the side diagonal: " << sum;
+
+    // освобождение памяти
+    for (int i = 0; i < lines; i++) {
+        delete[] arr[i];
+    }
+    delete[] arr;
+
+    return 0;
+}
+
